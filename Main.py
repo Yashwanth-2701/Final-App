@@ -137,8 +137,9 @@ def image():
             st.text(z)
 
             #storage in firebase
-            fire={"Length":I1,"Width":I2,"Weight":pred,"Plantcount":plant,"Calculation":calc}
-            db.reference("/ImageData").push().set(fire)
+            f={"Length":I1,"Width":I2,"Weight":pred,"Plantcount":plant,"Calculation":calc}
+            i=0
+            db.reference("/ImageData").push(i+1).set(f)
 
             #Storage in csv
             fields = [I1, I2, pred,plant,calc]
@@ -228,8 +229,8 @@ def capture():
             st.text(z)
 
             #storage in firebase
-            fire ={"Length":I1,"Width":I2,"Weight":pred,"Plantcount":plant,"Calculation":calc}
-            db.reference("/capture").push().set(fire)
+            f={"Length":I1,"Width":I2,"Weight":pred,"Plantcount":plant,"Calculation":calc}
+            db.reference("/capture").push().set(f)
 
             #Storage in csv
             fields = [I1, I2, pred,plant,calc]
