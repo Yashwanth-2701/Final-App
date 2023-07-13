@@ -63,8 +63,8 @@ def stat():
 def image():
     try:
         # Load Aruco detector
-        dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_50)
-        parameters =  cv2.aruco.DetectorParameters()
+        parameters = cv2.aruco.DetectorParameters_create()
+        aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
         # Load Object Detector
         detector = HomogeneousBgDetector()
 
@@ -79,7 +79,7 @@ def image():
             img = cv2.imdecode(np.fromstring(imageinput.read(), np.uint8),1)
 
             # Get Aruco marker
-            corners, _, _ = cv2.aruco.detectMarkers(img, dictionary, parameters=parameters)
+            corners, _, _ = cv2.aruco.detectMarkers(img, aruco_dict, parameters=parameters)
 
             # Draw polygon around the marker
             int_corners = np.int0(corners)
@@ -158,8 +158,8 @@ def image():
 def capture():
     st.subheader("Weight Prediction using ML Model for Capturing Image")
     try:
-        dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_50)
-        parameters =  cv2.aruco.DetectorParameters()
+        parameters = cv2.aruco.DetectorParameters_create()
+        aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_50)
         # Load Object Detector
         detector = HomogeneousBgDetector()
 
@@ -171,7 +171,7 @@ def capture():
             bytes_data = img_file_buffer.getvalue()
             img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
             # Get Aruco marker
-            corners, _, _ = cv2.aruco.detectMarkers(img, dictionary, parameters=parameters)
+            corners, _, _ = cv2.aruco.detectMarkers(img, aruco_dict, parameters=parameters)
 
             # Draw polygon around the marker
             int_corners = np.int0(corners)
