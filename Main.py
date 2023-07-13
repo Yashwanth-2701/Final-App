@@ -26,7 +26,7 @@ def stat():
         st.subheader("Weight Prediction using ML Model for Statistical Data")
         a=float(st.number_input("Height in cm"))
         b=float(st.number_input("Width in cm"))
-        plant=st.number_input("Enter the no of Plants")
+        plant=st.number_input("Enter the no of Plants",value=1,step=1)
 
         with open(r"RegModel.pkl", 'rb') as file:
             regressor = pickle.load(file)
@@ -70,7 +70,7 @@ def image():
 
         st.subheader("Weight Prediction using ML Model for Image Data")
         imageinput = st.file_uploader("",type=['png', 'jpg'])
-        plant=st.number_input("Enter the no of Plants")
+        plant=st.number_input("Enter the no of Plants",value=1,step=1)
         
         btn = st.button("Predict")
 
@@ -163,7 +163,7 @@ def capture():
         # Load Object Detector
         detector = HomogeneousBgDetector()
 
-        plant=st.number_input("Enter the no of Plants")
+        plant=st.number_input("Enter the no of Plants",value=1,step=1)
         img_file_buffer = st.camera_input("Take a picture")
 
         if img_file_buffer is not None:
